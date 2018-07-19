@@ -1,0 +1,12 @@
+程序说明：
+此程序用于自动检索hive库中表数据结构，与DMP大数据字典表结构之间存在的差异性及基本表信息。
+
+函数调用过程：
+1.main.py                      (主函数入口)
+2.read_file_path.py           （按照给出的hive库数据信息文件路径，读取path路径内表数据信息）
+   2.1 read_table_data_information(table_data,database_name,table_name_lower)
+   2.2 wttx.write_txt_to_xls(table_data)
+3.read_dmp_table_dict         （读取手动合成的DMP数据字典中的表及表结构数据信息           ）
+4.check_file_type             （检索hive 中表数据信息读取过程中，存在的空表，编码问题表，无法读出表的记录信息）
+5.active_check_dict_differ    （自动检索得到的hive表结构信息与DMP数据字典表信息的差异性及基本信息，并返回差异数据结构）
+6.write_differ_information    （将获得的差异性数据结构信息，设计合理的格式，并写入到excel表中保存）
